@@ -1,4 +1,18 @@
 <%= form_for(book) do |f| %>
+
+	<!-- エラーメッセージ表示-->
+	<% if book.errors.any? %>
+		<div id="error_explanation">
+			<h3><%= book.errors.count %>error prohibited this obj from being saved:</h3><
+			<ul>
+				<% book.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<!-- エラーメッセージ表示-->
+
 	<div class="field row">
 		<%= f.label :title %>
 		<%= f.text_field :title, class: "col-xs-12 book_title" %>
@@ -12,4 +26,5 @@
 	<div class="actions row">
 		<%= f.submit class: "btn btn-primary col-xs-12" %>
 	</div>
+
 <% end %>
